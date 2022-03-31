@@ -1,5 +1,7 @@
 node {
+
     def app
+
     stage('Clone repository') {
         checkout scm
     }
@@ -32,6 +34,8 @@ node {
 
         stage('Trigger ManifestUpdate') {
                 echo "triggering updatemanifestjob"
-                build job: 'updatemanifest', parameters: [string(name: 'DOCKERTAG', value: env.BUILD_NUMBER)]
+                // build job: 'updatemanifest', parameters: [string(name: 'DOCKERTAG', value: env.BUILD_NUMBER)]
+                build job: 'updatemanifest-region1', parameters: [string(name: 'DOCKERTAG', value: env.BUILD_NUMBER)]
+                build job: 'updatemanifest-region2', parameters: [string(name: 'DOCKERTAG', value: env.BUILD_NUMBER)]
         }
 }
