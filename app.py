@@ -9,4 +9,4 @@ if region_name is None:
 
 @app.route('/')
 def hello_world():
-    return 'Hello, ' + region_name
+    return 'Bye, ' + region_name
